@@ -1,0 +1,6 @@
+__pycache__/
+my_env/
+instance/
+
+.env
+sections_for_e-commerce_site.txt
