@@ -1,0 +1,4 @@
+Had an issue with styling login and register.html. They wouldn't be centered. 
+Solution: created a body class and styled them differently.
+
+Log In page won't display the flash message when a user does not exist in the database. 

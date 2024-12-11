@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% endblock %}
+</head>
+<body class="{% block body_class %} {% endblock %}">
+    {% block navbar %}
+    <div class="navbar-container">
+        <div class="navbar-left">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+                    <a href="#">Categories</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">For Men</a></li>
+                        <li><a href="#">For Women</a></li>
+                        <li><a href="#">Home Appliances</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        {% if current_user.is_authenticated %}
+        <div class="navbar-right">
+            <ul>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="navbar-right">
+            <ul>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </div> 
+        {% endif %}
+    </div> 
+    {% endblock %}
+
+    <!-- Flash Messages Section -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-messages">
+        {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <div class="main-content">
+        {% block content %} {% endblock %}
+    </div>
+
+</body>
+</html>

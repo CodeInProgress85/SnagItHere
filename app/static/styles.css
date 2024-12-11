@@ -1,0 +1,149 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, Helvetica, sans-serif;  /* Modern, web-safe font */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Container for flash messages */
+.flash-messages {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 1000;
+    text-align: center;
+}
+
+/* General style for all flash messages */
+.flash-message {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+/* Success Message */
+.flash-message.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Error Message */
+.flash-message.danger {  /* changed from .flash-message.error to .flash-message.danger */
+    background-color: #f44336;
+    color: white;
+}
+
+/* Warning Message */
+.flash-message.warning {
+    background-color: #ff9800;
+    color: white;
+}
+
+/* Info Message */
+.flash-message.info {
+    background-color: #2196F3;
+    color: white;
+}
+
+/* Navbar Container */
+.navbar-container {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar Left */
+.navbar-left ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-left li {
+    position: relative;
+}
+
+.navbar-left a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-left a:hover {
+    background-color: #444;
+}
+
+/* Navbar Right */
+.navbar-right ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    background-color: #444;
+}
+
+/* Dropdown Menu */
+.navbar-left .dropdown-menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 10;
+}
+
+.navbar-left li:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-left .dropdown-menu li {
+    padding: 10px;
+}
+
+.navbar-left .dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px;
+    display: block;
+}
+
+.navbar-left .dropdown-menu a:hover {
+    background-color: #444;
+}

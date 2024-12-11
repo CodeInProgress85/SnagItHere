@@ -1,0 +1,248 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, Helvetica, sans-serif;  /* Modern, web-safe font */
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;  /* Horizontally center the form */
+    align-items: center;      /* Vertically center the form */
+    min-height: 100vh;        /* Ensure the body takes up the full viewport height */
+    padding: 0;               /* Remove padding to eliminate space around the body */
+}
+
+/* For login page */
+body.login-page {
+    display: flex;
+    justify-content: center;  /* Horizontally center the login form */
+    align-items: center;      /* Vertically center the login form */
+}
+
+/* For registration page */
+body.register-page {
+    align-items: flex-start;  /* Align the form to the top for longer forms */
+    padding-top: 40px;  /* Adjust the top padding to create space for longer forms */
+}
+
+/* Form container styling */
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;  /* Adjusted for more fields, especially for registration */
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;  /* Stacks form elements vertically */
+    overflow-y: auto;  /* Enables scrolling for long forms */
+}
+
+/* Form field styling */
+.form-group {
+    margin-bottom: 20px;  /* Increased space between fields */
+    display: flex;
+    flex-direction: column;  /* Ensures label and input stack vertically */
+}
+
+/* Labels */
+.form-group label {
+    font-size: 16px;  /* Slightly larger font for readability */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;  /* Space between label and input field */
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;  /* Slightly larger font for input */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Input fields: focus state */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Error messages */
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Submit button: hover state */
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Container for flash messages */
+.flash-messages {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 1000;
+    text-align: center;
+}
+
+/* General style for all flash messages */
+.flash-message {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+/* Success Message */
+.flash-message.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Error Message */
+.flash-message.error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Warning Message */
+.flash-message.warning {
+    background-color: #ff9800;
+    color: white;
+}
+
+/* Info Message */
+.flash-message.info {
+    background-color: #2196F3;
+    color: white;
+}
+
+/* Navbar Container */
+.navbar-container {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar Left */
+.navbar-left ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-left li {
+    position: relative;
+}
+
+.navbar-left a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-left a:hover {
+    background-color: #444;
+}
+
+/* Navbar Right */
+.navbar-right ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    background-color: #444;
+}
+
+/* Dropdown Menu */
+.navbar-left .dropdown-menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 10;
+}
+
+.navbar-left li:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-left .dropdown-menu li {
+    padding: 10px;
+}
+
+.navbar-left .dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px;
+    display: block;
+}
+
+.navbar-left .dropdown-menu a:hover {
+    background-color: #444;
+}

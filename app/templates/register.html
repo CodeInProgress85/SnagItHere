@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+{% endblock %}
+
+{% block navbar %} {% endblock %}
+
+{% block body_class %} register-page {% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <form action="{{ url_for('sign_up') }}" method="post" novalidate>
+        {{ form.hidden_tag()}}
+        <!-- Username Field -->
+        <div class="form-group">
+            <label for="username">{{ form.username.label }}</label>
+            {{ form.username(size=32, id="username", aria_required="true", aria_describedby="username-error") }}
+            {% for error in form.username.errors %}
+                <span id="username-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+            <label for="email">{{ form.email.label }}</label>
+            {{ form.email(id="email", aria_required="true", aria_describedby="email-error") }}
+            {% for error in form.email.errors %}
+                <span id="email-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+            <label for="password">{{ form.password.label }}</label>
+            {{ form.password(id="password", aria_required="true", aria_describedby="password-error") }}
+            {% for error in form.password.errors %}
+                <span id="password-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="form-group">
+            <label for="confirm_password">{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password(id="confirm_password", aria_required="true", aria_describedby="confirm_password-error") }}
+            {% for error in form.confirm_password.errors %}
+                <span id="confirm_password-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- First Name Field -->
+        <div class="form-group">
+            <label for="first_name">{{ form.first_name.label }}</label>
+            {{ form.first_name(id="first_name", aria_required="true", aria_describedby="first_name-error") }}
+            {% for error in form.first_name.errors %}
+                <span id="first_name-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Last Name Field -->
+        <div class="form-group">
+            <label for="last_name">{{ form.last_name.label }}</label>
+            {{ form.last_name(id="last_name", aria_required="true", aria_describedby="last_name-error") }}
+            {% for error in form.last_name.errors %}
+                <span id="last_name-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Billing Address Field -->
+        <div class="form-group">
+            <label for="billing_address">{{ form.billing_address.label }}</label>
+            {{ form.billing_address(id="billing_address", aria_required="true", aria_describedby="billing_address-error") }}
+            {% for error in form.billing_address.errors %}
+                <span id="billing_address-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Shipping Address Field -->
+        <div class="form-group">
+            <label for="shipping_address">{{ form.shipping_address.label }}</label>
+            {{ form.shipping_address(id="shipping_address", aria_required="true", aria_describedby="shipping_address-error") }}
+            {% for error in form.shipping_address.errors %}
+                <span id="shipping_address-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Phone Number Field -->
+        <div class="form-group">
+            <label for="phone_number">{{ form.phone_number.label }}</label>
+            {{ form.phone_number(id="phone_number", aria_required="true", aria_describedby="phone_number-error") }}
+            {% for error in form.phone_number.errors %}
+                <span id="phone_number-error" class="error-message" role="alert">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

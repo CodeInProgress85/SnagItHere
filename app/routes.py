@@ -1,6 +1,56 @@
-from app import app
-from flask import render_template
+from flask import render_template, redirect, flash, url_for
+from flask_login import current_user, login_required, login_user, logout_user
+from app import app, db
+from app.forms import RegistrationForm, LoginForm
+from app.models import User
 
 @app.route("/")
 def home():
-    return "It works!"
+    return render_template("home.html", title="Home")
+
+@app.route("/sign-up", methods=["get", "post"])
+def sign_up():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
+    
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        new_user = User(
+            username = form.username.data,
+            email = form.email.data,
+            first_name = form.first_name.data,
+            last_name = form.last_name.data, 
+            billing_address = form.billing_address.data, 
+            shipping_address = form.shipping_address.data,
+            phone_number = form.phone_number.data
+        )
+
+        new_user.set_password(form.password.data)
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash("Registration successful. Please log in", "sucess")
+        return redirect(url_for("login"))
+    
+    return render_template("register.html", title="Sign Up", form=form)
+
+@app.route("/sign-in", methods=["get", "post"])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
+    
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+
+        if user and user.verify_password(form.password.data):
+            login_user(user)
+
+            return redirect(url_for("home"))
+        else:
+            flash("Invalid username and/or password", "danger")
+
+    return render_template("login.html", title="Log In", form=form)

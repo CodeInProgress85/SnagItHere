@@ -1,9 +1,14 @@
-from app import db
+from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from app import db, login
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
@@ -14,6 +19,8 @@ class User(db.Model):
     shipping_address = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(15))
     img_url = db.Column(db.String(200))
+
+    seller = db.Column(db.Boolean(), default=False)
 
     password_reset_token = db.Column(db.String(100))
     reset_token_expiration = db.Column(db.DateTime)
