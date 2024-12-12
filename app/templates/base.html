@@ -33,13 +33,13 @@
         <div class="navbar-right">
             <ul>
                 <li><a href="#">Cart</a></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             </ul>
         </div>
         {% else %}
         <div class="navbar-right">
             <ul>
-                <li><a href="#">Log In</a></li>
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="#">Register</a></li>
             </ul>
         </div> 
@@ -57,7 +57,8 @@
             </div>
         {% endfor %}
     </div>
-    {% endif %} {% endwith %}
+    {% endif %}
+    {% endwith %}
 
     <div class="main-content">
         {% block content %} {% endblock %}
