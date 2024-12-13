@@ -16,7 +16,7 @@ class RegistrationForm(FlaskForm):
     phone_number = StringField("Phone Number", validators=[DataRequired(), Length(min=10, max=15)])
     submit = SubmitField("Sign Up")
 
-    def validate_user(self, username):
+    def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         
         if user is not None:
@@ -32,3 +32,12 @@ class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Sign In")
+
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    submit = SubmitField("Send Request Link")
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField("New Password", validators=[DataRequired()])
+    confirm_password = PasswordField("Confirm Password", validators=[DataRequired(), EqualTo("password")])
+    submit = SubmitField("Reset Password")

@@ -93,6 +93,11 @@ textarea:focus {
     margin-top: 5px;
 }
 
+.forgot-password {
+    font-size: 14px;
+    text-align: right; /* Optional: Aligns the link to the right */
+}
+
 /* Submit button styling */
 button[type="submit"] {
     width: 100%;
@@ -109,6 +114,11 @@ button[type="submit"] {
 /* Submit button: hover state */
 button[type="submit"]:hover {
     background-color: #2980b9;
+}
+
+.sign-up-link {
+    font-size: 14px;
+    text-align: center; /* Optional: Center the link below the form */
 }
 
 /* Container for flash messages */

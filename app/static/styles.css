@@ -110,6 +110,7 @@ body {
     background-color: #4CAF50; /* Green for success */
     color: #fff;
     border: 1px solid #388E3C;
+    animation: fadeOut 5s linear forwards;
 }
 
 .flash-message.error {
@@ -129,6 +130,12 @@ body {
     color: #fff;
     border: 1px solid #1976D2;
 }
+
+/* Keyframes for fade out animation for success messages */
+@keyframes fadeOut { 
+    0% { opacity: 1; } 
+    80% { opacity: 1; } 
+    100% { opacity: 0; } }
 
 .main-content {
     padding: 20px;

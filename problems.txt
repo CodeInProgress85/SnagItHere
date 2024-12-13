@@ -3,3 +3,6 @@ Solution: created a body class and styled them differently.
 
 Log In page won't display the flash message when a user does not exist in the database. 
 Solution: the {{ form.hidden_tag() }} was outside the <form> block and needed to be inside to submit the form properly. Otherwise, it will reject the submission. 
+
+Registration page doesn't raise the ValidationError() when a user tries to use an exisiting username.
+Solution: Scanned through my forms.py, went to the RegistrationForm() and edited the validate_user method to validate_username. 

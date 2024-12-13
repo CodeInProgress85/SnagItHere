@@ -13,9 +13,9 @@ app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+
 
 from app import routes, models

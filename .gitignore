@@ -4,5 +4,6 @@ instance/
 migrations/
 
 .env
+.idea
 sections_for_e-commerce_site.txt
 /app/templates/login1.html
